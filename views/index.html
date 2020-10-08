@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- use ajax to pull in all waitlist and table data
+    put it into the correct div -->
+    <nav>
+        <a href="/">Home</a>
+        <span>|</span>
+        <a href="/reserve">Make a Reservation</a>
+    </nav>
+    <h1>Homepage</h1>
+    <h2>Tables</h2>
+    <div id="tableCards">
+    </div>
+    <h2>Waitlist</h2>
+    <div id="waitlistCards">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        $.get("/api/tables").then(function(data){
+            console.log("API TABLE DATA:")
+            console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                const newCard = $("<div>");
+                newCard.addClass("card");
+
+                const nameHeader = $("<h3>");
+                nameHeader.text(`${data[i].id} ${data[i].name}`)
+                newCard.append(nameHeader);
+
+                const PhoneHeader = $("<h4>");
+                phoneHeader.text(`phone: ${data[i].phoneNumber}`);
+                newCard.append(phoneHeader);
+
+                const emailHeader = $("<h4>");
+                emailHeader.text(`email: ${data[i].email}`);
+                newCard.append(emailHeader);
+
+                $("#tableCards").append(newCard);
+            }
+        })
+        $.get("/api/waitlist").then(function(data) {
+            console.log("API WAITLIST DATA");
+            console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                const newCard = $("<div>");
+                newCard.addClass("card");
+
+                const nameHeader = $("<h3>");
+                nameHeader.text(`${data[i].id} ${data[i].name}`)
+                newCard.append(nameHeader);
+
+                const PhoneHeader = $("<h4>");
+                phoneHeader.text(`phone: ${data[i].phoneNumber}`);
+                newCard.append(phoneHeader);
+
+                const emailHeader = $("<h4>");
+                emailHeader.text(`email: ${data[i].email}`);
+                newCard.append(emailHeader);
+
+                $("#waitlistCards").append(newCard);
+            }
+        })
+    </script>
+</body>
+</html>
