@@ -8,5 +8,5 @@ let tableData = [
 ];
 
 module.exports = {
-    tableData.tableData
+    tableData:tableData
 }

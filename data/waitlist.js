@@ -2,7 +2,7 @@ let waitlistData = [
     {
         name:"renee",
         phoneNumber:"456",
-        email:"ren@e.e"
+        email:"ren@e.e",
         id: "2"
     }
 ];

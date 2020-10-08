@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.router();
+const router = express.Router();
 
 //build data structures
 const tableDataObj = require("../data/tables.js");

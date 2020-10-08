@@ -19,9 +19,9 @@
         $("#resForm").on("submit", function(event){
             event.preventDefault();
             const newResObj= {
-                name: $("customerName").val(),
-                phoneNumber: $("customerPhone").val(),
-                email: $("customerEmail").val(),
+                name: $("#customerName").val(),
+                phoneNumber: $("#customerPhone").val(),
+                email: $("#customerEmail").val(),
                 id: $("#customerId").val()
             }
             $.post("/api/tables", newResObj).then(function(data){
